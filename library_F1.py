@@ -190,26 +190,7 @@ def create_entries(parent_frame, labels, bg_color="#E6F3F3"):
         
             entry = ttk.Combobox(row_frame, values=options[label_text], state="readonly")
             entry.set("")  # Default text
-
-        elif label_text in ["Publish Date:", "Issue Date:"]:
-            entry = tk.Entry(row_frame, width=30, font=("Arial", 10))
-            entry.insert(0, "YYYY-MM-DD")  # Default text
-            entry.config(fg="grey")  # Set text color to grey
-
-            # Define event handlers for entry focus
-            def on_entry_click(event):
-                if entry.get() == "YYYY-MM-DD":
-                    entry.delete(0, "end")  # Delete default text
-                    entry.config(fg="black")  # Change text color to black
-
-            def on_focusout(event):
-                if entry.get() == "":
-                    entry.insert(0, "YYYY-MM-DD")  # Reset to default text
-                    entry.config(fg="grey")  # Change text color to grey
-
-            entry.bind("<FocusIn>", on_entry_click)
-            entry.bind("<FocusOut>", on_focusout)
-
+            
         else:
             # Entry configuration with custom style
             entry = ttk.Entry(
